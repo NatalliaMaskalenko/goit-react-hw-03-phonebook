@@ -6,14 +6,27 @@ state = {
   number: ''
     }
 
-     handleChange = (e) => {
+     handleChange = e => {
     const { name, value } = e.currentTarget;
       this.setState({[name]: value})
-  }
+    }
+    
+    handelSubmit = e => {
+        e.preventDefault();
+        this.props.onSubmit(this.state);
+        this.reset()
+    }
+
+    reset = () => {
+        this.setState({
+            name: '',
+            number: ''
+        });
+    }
 
     render() {
         return (
-    <form>
+    <form onSubmit={this.handelSubmit}>
         <label>
           Name
            <input
@@ -35,10 +48,11 @@ state = {
                name="number"
                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            onChange = {this.handleChange}
+               required
+               onChange = {this.handleChange}
 />
-        </label>
+          </label>
+            <button type="submit">Add contact</button>
     </form>
         
     )
