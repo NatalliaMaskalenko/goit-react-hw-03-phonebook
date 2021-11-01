@@ -41,16 +41,17 @@ state = {
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
     const normolizedFitres = filter.toLowerCase();
-
-    return contacts.filter(contact => contact.name.toLowerCase().includes(normolizedFitres) )
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normolizedFitres),
+    );    
   };
 
     
   render() {
-    const { contacts, filter} = this.state;
-    const { addContact, deleteContact, changeFilter } = this;
-    // const visibleContacts = this.getVisibleContacts;
-    
+    const {filter} = this.state;
+    const { addContact, deleteContact, changeFilter} = this;
+    const visibleContacts = this.getVisibleContacts();
+        
     return (
       <div>
         <h1>Phonebook</h1>
@@ -58,7 +59,7 @@ state = {
         <h2>Contacts</h2>
         <Filter  value={filter} onChange={changeFilter}/>
         <ContactsList
-          contacts={contacts}
+          contacts={visibleContacts}
           onDeleteContact={deleteContact} />
       </div>
    );
