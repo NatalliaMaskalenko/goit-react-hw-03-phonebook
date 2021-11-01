@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { alert } from '@pnotify/core';
+import s from './App.module.css'
+import '@pnotify/core/dist/BrightTheme.css';
 import Form from './components/Form';
 import ContactsList from './components/ContactsList';
 import Filter from './components/Filter';
@@ -28,6 +31,12 @@ state = {
       name,
       number,
     }
+
+    const normolizedName = name.toLowerCase();
+
+    if (this.state.contacts.find(contact => contact.name.toLowerCase() === normolizedName)) {
+      return alert(`${name} is already in contacts`);
+    };  
     
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
@@ -53,9 +62,11 @@ state = {
     const visibleContacts = this.getVisibleContacts();
         
     return (
-      <div>
+      <div className={s.container}>
         <h1>Phonebook</h1>
-        <Form onSubmit={addContact} />
+        <Form
+          onSubmit={addContact}
+        />
         <h2>Contacts</h2>
         <Filter  value={filter} onChange={changeFilter}/>
         <ContactsList

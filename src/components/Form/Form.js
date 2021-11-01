@@ -1,4 +1,5 @@
-import { Component } from "react";
+import { Component } from 'react';
+import s from './Form.module.css'
 
 class Form extends Component{
 state = {
@@ -26,23 +27,27 @@ state = {
 
     render() {
         return (
-    <form onSubmit={this.handelSubmit}>
-        <label>
+    <form
+        className={s.form}
+        onSubmit={this.handelSubmit}>
+        <label className={s.form__label}>
           Name
            <input
-             value={this.state.name}
-             type="text"
-             name="name"
-             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-             required
-             onChange = {this.handleChange}
+               className={s.form__input}
+               value={this.state.name}
+               type="text"
+               name="name"
+               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+               required
+               onChange = {this.handleChange}
 />
         </label>
   
-        <label>
+        <label className={s.form__label}>
           Number
-          <input
+            <input
+               className={s.form__input}         
                value={this.state.number}
                type="tel"
                name="number"
@@ -52,7 +57,7 @@ state = {
                onChange = {this.handleChange}
 />
           </label>
-            <button type="submit">Add contact</button>
+            <button className={s.form__button} type="submit">Add contact</button>
     </form>
         
     )
