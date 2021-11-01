@@ -1,11 +1,14 @@
-const ContactsList = ({ contacts, onDeleteContact}) => (
+import ContactsItem from '../ContactsItem';
+
+const ContactsList = ({ contacts, onDeleteContact }) => (
     <ul>
-        {contacts.map(({id, name, number}) => (
-            <li key={id}>
-                <p>{name}</p>
-                <p>{number}</p>
-                <button onClick = {()=> onDeleteContact(id)}>Delete</button>
-            </li>
+        {contacts.map(({id, name, number} ) => (
+             <ContactsItem
+                key={id}
+                id={id}
+                name={name}
+                number={number}
+                onDeleteContact={onDeleteContact} />
         ))}
     </ul>
 );
