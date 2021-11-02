@@ -1,8 +1,10 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { alert } from '@pnotify/core';
-import s from './App.module.css'
+import { alert} from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
+import s from './App.module.css'
+
 import Form from './components/Form';
 import ContactsList from './components/ContactsList';
 import Filter from './components/Filter';
