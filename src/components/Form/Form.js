@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import s from './Form.module.css'
 
@@ -62,6 +63,10 @@ state = {
         
     )
 }
-}
+};
+
+Form.propTypes = {
+    onSubmit: PropTypes.func,
+};
 
 export default Form;
